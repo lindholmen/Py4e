@@ -1,0 +1,3 @@
+>>> from doctest_practice import double
+>>> double([1,2,3,4])
+[2, 4, 6, 8]
