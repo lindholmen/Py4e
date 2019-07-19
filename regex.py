@@ -174,5 +174,14 @@ def split_title_and_name(person):
 #print(list(map(split_title_and_name, people)))
 
 
+myregex = re.compile(r"[^\w ]")
+text = myregex.sub(" ","i am a F!! No, I, that is not me.")
+text = text.lower()
+X = filter(None,text.split(" "))
+word_cnt = {}
+for word in filter(None,text.split(" ")):
+    word_cnt.setdefault(word,0)
+    word_cnt[word] = word_cnt[word] +1
 
+print(word_cnt)
 

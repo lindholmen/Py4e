@@ -60,7 +60,6 @@ expensive = heapq.nlargest(3, portfolio,key= lambda x: x["price"])
 print("expensive:",expensive)
 
 # PriorityQueue
-import heapq
 class PriorityQueue:
     def __init__(self):
         self._queue = []
@@ -120,3 +119,69 @@ d["C"] = 3
 d["C"] = 0
 for key in d:
     print(f"key:{key}, value:{d[key]}")
+
+# want to the min and max price
+prices = {
+    'ACME': 45.23,
+    'AAPL': 612.78,
+    'IBM': 205.55,
+    'HPQ': 37.20,
+    'FB': 10.75
+}
+#zip 翻转key-value pair
+price_list = list(zip(prices.values(),prices.keys()))
+
+print(min(price_list))
+print(max(price_list))
+print(sorted(price_list))
+print("股价从小到大的股票代码：", sorted(prices, key = lambda x:prices[x]))
+print("股价最高股：",max(prices,key=lambda x:prices[x]))
+
+prices = {
+    'ACME': 45.23,
+    'FB': 45.23
+}
+print("key相同时看值大小：max - ",max(zip(prices.values(),prices.keys())))
+print("key相同时看值大小：min - ",min(zip(prices.values(),prices.keys())))
+
+# 查找两字典的相同点
+a = {
+    'x' : 1,
+    'y' : 2,
+    'z' : 3
+}
+
+b = {
+    'w' : 10,
+    'x' : 11,
+    'y' : 2
+}
+
+print(a.keys()-b.keys())
+print(a.keys() &  b.keys())
+
+# 删除序列相同元素并保持顺序
+def dudupe(items):
+    myset = set()
+    for item in items:
+        if item not in myset:
+            myset.add(item)
+            yield item
+
+a = [1, 5, 2, 1, 9, 1, 5, 10]
+for i in dudupe(a):
+    print("value in the list:",i)
+
+# 这个方法仅仅在序列中元素为 hashable 的时候才管用。 如果你想消除元素不可哈希（比如 dict 类型）的序列中重复元素的话:
+a_nonhashable = [ {'x':1, 'y':2}, {'x':1, 'y':3}, {'x':1, 'y':2}, {'x':2, 'y':4}]
+def dudupe_nonhashable(items, func=None):
+    myset = set()
+    for item in items:
+        val = item if func is None else func(item)
+        if val not in myset:
+            myset.add(val)
+            yield item
+print(list(dudupe_nonhashable(a_nonhashable,lambda e: (e["x"],e['y']))))
+
+
+
