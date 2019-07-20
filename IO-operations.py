@@ -3,9 +3,13 @@
 f = open("data.txt",'w')
 #f.write("'r' This is the default mode. It Opens file for reading. 'w'	This Mode Opens file for writing. If file does not exist, it creates a new file.If file exists it truncates the file.'x'	Creates a new file. If file already exists, the operation fails.'a'	Open file in append mode. If file does not exist, it creates a new file.'t'	This is the default mode. It opens in text mode.'b'	This opens in binary mode.'+'	This will open a file for reading and writing (updating)\n")
 #f.write("梅花香自苦寒来\n")
-f.write("Make progress everyday\n")
-f.write("Today is March 1st 2019\n")
-f.close()
+try:
+    f.write("Make progress everyday\n")
+    f.write("Today is March 1st 2019\n")
+except:
+    pass
+finally:
+    f.close()
 
 # read() is to read all the text
 f=open("data.txt")
@@ -86,3 +90,32 @@ def find_and_replace(f, oldname,newname):
         handler2.write(newstory)
 
 find_and_replace("story.txt","Bob","Alice")
+
+
+def readlinesv2(f):
+    line = f.readline()
+    while line:
+        yield line
+        line = f.readline()
+
+with open("data.txt","r") as f:
+    for line in readlinesv2(f):
+        print(line.strip())
+
+
+# 序列化：json
+
+import json
+config ={"ip":'192.168.1.1', 'port': ['9100', '9101', '9102']}
+with open("config.json","w+") as f:
+    json.dump(config,f)
+
+with open("config.json","r") as f:
+    new_config_list = json.load(f)
+print(type(new_config_list))
+
+config_str = '{"ip": "192.168.1.1", "port": ["9100", "9101", "9102"]}'
+config = json.loads(config_str)
+print(type(config))
+config_str = json.dumps(config)
+print(type(config_str))
