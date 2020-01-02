@@ -153,3 +153,36 @@ def delete_users(oldfirst,oldlast):
     return "Users deleted: {}.".format(count)
 
 print(delete_users("Colt", "Steele"))
+
+
+###
+description = []
+list_of_labels_buying_computers = []
+with open("sales.csv", "r") as handler:
+    csv_reader = reader(handler)
+    table_header = next(csv_reader)
+    for row in csv_reader:
+        column_size = len(row)
+        list_of_labels_buying_computers.append(row[-1])
+        row_dict = {}
+        for i in range(column_size):
+            row_dict[table_header[i]] = row[i]
+        description.append(row_dict)
+
+print(description)
+print(list_of_labels_buying_computers)
+
+import pickle
+
+class MyObject:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+obj = MyObject(100, 200)
+s_obj = pickle.dumps(obj)
+print(type(s_obj)) #<class 'bytes'>
+print(s_obj) #b'\x80\x03c__main__\nMyObject\nq\x00)\x81q\x01}q\x02(X\x01\x00\x00\x00xq\x03KdX\x01\x00\x00\x00yq\x04K\xc8ub.'
+obj = pickle.loads(s_obj)
+print(type(obj)) #<class '__main__.MyObject'>
+print(obj)

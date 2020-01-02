@@ -14,10 +14,12 @@ from PIL import Image
 
 MASK_IMAGE = "Huan.jpeg"
 #FILE_PATH = "JDcomment.txt"
-FILE_PATH = "JDcomment2.txt"
+FILE_PATH = "JDcomment3.txt"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
 #url = "https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv4827&productId=1263013576&score=0&sortType=5&page={}&pageSize=10&isShadowSku=0&fold=1"
-url = "https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2847&productId=7434156&score=0&sortType=5&page={}&pageSize=10&isShadowSku=0&fold=1"
+#url = "https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2847&productId=7434156&score=0&sortType=5&page={}&pageSize=10&isShadowSku=0&fold=1"
+url = "https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv2847&productId=100001550349&score=0&sortType=5&page={}&pageSize=10&isShadowSku=0&fold=1"
+
 FONT_PATH = "/Library/Fonts/Songti.ttc"
 
 def requestData(url, user_agent):

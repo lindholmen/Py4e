@@ -114,8 +114,10 @@ with open("config.json","r") as f:
     new_config_list = json.load(f)
 print(type(new_config_list))
 
+
+# dict和str相互转化
 config_str = '{"ip": "192.168.1.1", "port": ["9100", "9101", "9102"]}'
-config = json.loads(config_str)
-print(type(config))
+config_dict = json.loads(config_str)
+print(type(config_dict))
 config_str = json.dumps(config)
 print(type(config_str))
