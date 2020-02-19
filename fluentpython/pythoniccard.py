@@ -28,7 +28,7 @@ print("random:",choice(deck))
 i = 8
 for card in reversed(deck):
     if i > 0:
-        print(card)
+        print("reversed:",card)
         i = i-1
     else:
         break
@@ -40,7 +40,7 @@ def spade_high(card):
     return rank_value * len(suit_values) + suit_values[card.suit]
 
 for card in sorted(deck, key = spade_high):
-    print(card)
+    print("sorted:",card)
 
 
 print(dir(ClassicDeck))
