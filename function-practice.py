@@ -149,3 +149,24 @@ def apply(*args, operator):
 
 apply_result = apply(2,3,4,operator = "*")
 print(f"apply : {apply_result}")
+
+
+def named(**kwargs):
+    print(kwargs)
+
+def print_nicely(**kwargs):
+    named(**kwargs)
+    for arg,value in kwargs.items():
+        print(f"{arg} is {value}")
+
+print_nicely(age = 16, name = "Gorge")
+
+def request(*args,**kwargs):
+    print("request - positional arguments:",args)
+    print("request - keyword arguments:", kwargs)
+def post(url,data =None, json=None, **kwargs):
+    return request("post",url, data,json, **kwargs) # add "post"
+
+post("www.abc.com", data = {"Message":"Hello World"},json = None, sender="Bob", receiver="Alice", timeout_limit = 400)
+deliver_info = {"sender":"A","receiver":"B", "timeout":200}
+post("www.abc.com", data = {"Message":"Hello World"},json = None, ** deliver_info)
