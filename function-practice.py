@@ -130,3 +130,22 @@ display_name(**name_info_dict, SomethingElse= "None yet") # unpack it to keyword
 def my_add(a: int, b: int) -> int:
     return a + b
 print(my_add(1,2))
+
+
+
+def multiply(*args):
+    total = 1
+    for arg in args:
+        total = total * arg
+    return total
+
+def apply(*args, operator):
+    if operator == "*":
+        return multiply(*args) # 这里必须unpack, 否则传入（2,3,4） 到multiply, args== （（2，3，4），）
+    elif operator == "+":
+        return sum(args)
+    else:
+        return "no valid operator"
+
+apply_result = apply(2,3,4,operator = "*")
+print(f"apply : {apply_result}")
