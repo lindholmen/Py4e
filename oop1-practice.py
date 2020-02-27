@@ -34,7 +34,7 @@ class User:
     def display_active_users(cls):
         return f'there are actually {cls.active_user} active users'
 
-    @classmethod
+    @classmethod # classmethod factory usage
     def from_string(cls,data_str): #  it just enhances the functionality of our User class, allowing us to pass a single string argument and create a user from it
         first, last, age = data_str.split(',') # equals first , last, age = 'a','b', '23'
         return cls(first,last,age)
@@ -137,3 +137,27 @@ r2 = Rectangle(10,5)
 print(r2)
 r2.height = 99 # call height.setter
 print(r2)
+
+# using factory case
+class Book():
+    BookType = ["paper", "hardcover"]
+    def __init__(self,name,covertype,weight):
+        self.name = name
+        self.covertype = covertype
+        self.weight = weight
+
+    @classmethod
+    def paper_factory(cls, name, weight):
+        return cls(name, cls.BookType[0],weight)
+
+    @classmethod
+    def hardcover_factory(cls, name, weight):
+        return cls(name, cls.BookType[1], weight)
+
+    def __repr__(self):
+        return f"{self.name} with {self.covertype} weighing {self.weight}g"
+
+book1 = Book("Situated Action", "paper", 1000)
+print(book1)
+a_paper_book = Book.paper_factory("CSCW",1500) # using calssmethod in factory pattern to quickly initialize a sub-class and dont have to pass papertype value everytime
+print(a_paper_book)
