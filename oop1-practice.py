@@ -204,3 +204,4 @@ store.add_item("key",160)
 f_store = Store.franchise(store)
 print(Store.store_details(f_store))
 print(Store.store_details(store))
+

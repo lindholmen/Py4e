@@ -229,3 +229,45 @@ print(C.mro())
 help(C) # super() will refer to whatever is next in the MRO. in this case it is A.
 # 但是依然会可以访问父类的方法！！
 multiple_inheritance_Obj.shouting()
+
+class Device():
+    def __init__(self,name, connected_by):
+        self.name = name
+        self.connected_by = connected_by
+        self.connected = True
+
+    def __str__(self):
+        return f"Device {self.name!r} ({self.connected_by})"
+
+    def disconnected(self):
+        self.connected = False
+
+    def reconnect(self):
+        self.connected = True
+
+class Printer(Device):
+    def __init__(self,name,connected_by, capacity):
+        super().__init__(name, connected_by)
+        self.capacity = capacity
+        self.remaining = capacity
+
+    def __str__(self):
+        return f"{super().__str__()} with remaining {self.remaining} pages"
+
+    def print(self,pages):
+        if not self.connected:
+            print("not connected")
+            return
+        print(f"Printed....remaining {self.remaining-pages}")
+        self.remaining -= pages
+
+
+printer = Printer("Canon","USB",100)
+print(printer)
+printer.print(40)
+printer.disconnected()
+printer.print(40)
+print(printer)
+printer.reconnect()
+printer.print(40)
+print(printer)
