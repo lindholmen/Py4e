@@ -271,3 +271,29 @@ print(printer)
 printer.reconnect()
 printer.print(40)
 print(printer)
+
+# CLASS COMPOSITION = a class is composed of multiple objects, "has relationship" rather than "is"
+print("")
+print("**************class composition***************")
+
+class Bookshelf:
+    def __init__(self,*books):
+        self.books = books
+
+    def __str__(self):
+        return f"This bookshelf has {len(self.books)} books"
+
+class Book():
+    def __init__(self,name):
+        self.name = name
+
+    def __str__(self):
+        return f"This book is {self.name}"
+
+
+book1 = Book("Harry Potter")
+book2 = Book("12 secerets")
+print(book1)
+print(book2)
+bookshelf = Bookshelf(book1,book2)
+print(bookshelf)

@@ -161,6 +161,14 @@ class Book():
     def __repr__(self):
         return f"{self.name} with {self.covertype} weighing {self.weight}g"
 
+    @property
+    def bookname(self):
+        return self.name
+
+    @bookname.setter
+    def bookname(self,newname):
+        self.name = newname
+
 book1 = Book("Situated Action", "paper", 1000)
 print(book1)
 a_paper_book = Book.paper_factory("CSCW",1500) # using calssmethod in factory pattern to quickly initialize a sub-class and dont have to pass papertype value everytime
@@ -169,6 +177,9 @@ a_hardcover_book = Book.hardcover_factory("Acting with technology",500) # using 
 print(a_hardcover_book)
 a_paper_book.downloadable_info()
 Book.downloadable_info()
+print("using properties:", book1.bookname) # method used as properties to replace getter and setter
+book1.bookname = "Harry Potter"
+print(book1.__dict__) # print all properties information as a dict
 
 
 class Store:
