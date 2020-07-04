@@ -152,4 +152,73 @@ print(d)
 print('name' in d)
 grumpy_dic = GrumpyDict("")
 
+def difference(d1,d2):
+    return {k:v for k,v in d1.items() if k not in d2}
 
+print("difference：",difference({'a':1,'b':2,'c':3},{'b':2}))
+
+
+def max_key(d):
+    return [] if len(d) == 0 else (max(d.keys()), d[max(d.keys())])
+
+print("max_key:", max_key({'a':3,'c':3,'b':2}) )
+
+def max_value(d):
+    return [] if len(d) == 0 else [(k,v) for k,v in d.items() if v == max(d.values())]
+
+print("max_value:", max_value({'a':3,'c':3,'b':2}) )
+
+def max_overlap(dict1,dict2):
+    overlap = set(dict1).intersection(dict2)
+    max_value = 0
+    max_i = None
+    for i in overlap:
+        if dict1.count(i) + dict2.count(i) > max_value:
+            max_value = dict1.count(i) + dict2.count(i)
+            max_i = i
+    return (max_i,max_value)
+
+print(max_overlap([1,2,2,2,3,3],[2,2,3,2,2,3]))
+
+
+import heapq
+portfolio = [
+    {'name': 'IBM', 'shares': 100, 'price': 91.1},
+    {'name': 'AAPL', 'shares': 50, 'price': 543.22},
+    {'name': 'FB', 'shares': 200, 'price': 21.09},
+    {'name': 'HPQ', 'shares': 35, 'price': 31.75},
+    {'name': 'YHOO', 'shares': 45, 'price': 16.35},
+    {'name': 'ACME', 'shares': 75, 'price': 115.65}
+]
+
+cheapest = heapq.nsmallest(3, portfolio,key= lambda x: x["price"])
+print("cheapest:",cheapest)
+expensive = heapq.nlargest(3, portfolio,key= lambda x: x["price"])
+print("expensive:",expensive)
+
+from collections import OrderedDict
+
+d = OrderedDict()
+d["B"] = 2
+d["A"] = 1
+d["C"] = 3
+d["C"] = 0
+for key in d:
+    print(f"key:{key}, value:{d[key]}")
+
+
+from collections import defaultdict
+lst = [(1,'apple'),(2,'orange'),(1,'compute')]
+d = defaultdict(list)
+for k,v in lst:
+    d[k].append(v)
+
+print(d)
+
+
+def merge_dict(dict1,dict2):
+    return {**dict1, **dict2}
+
+dic1 = {'x': 1, 'y': 2 }
+dic2 = {'y': 3, 'z': 4 }
+print(merge_dict(dic1, dic2))

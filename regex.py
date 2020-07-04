@@ -16,7 +16,7 @@ print("group1 as the first group:",mo.group(1)) #用group()获得匹配regex的�
 print("group2 as the second group:",mo.group("second"))
 print("return the entire matching string:",mo.group(0), ", same as mo.group():", mo.group())
 
-print("return multiple grups:",mo.groups()) # tuple
+print("return multiple groups:",mo.groups()) # tuple
 print("return all matches in a list of tuples:", mo_for_all)
 #不分组
 phone_regex = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
@@ -185,3 +185,23 @@ for word in filter(None,text.split(" ")):
 
 print(word_cnt)
 
+
+# finditerator
+s = '山东省潍坊市青州第1中学高三1班'
+pat = '1'
+r = re.finditer(pat, s)
+for i in r:
+    print(i)
+
+
+s = 'That'
+pat = r't'
+r = re.finditer(pat,s,re.I)
+for i in r:
+    print(i.span())
+
+
+# Split
+s = 'This,,,   module ; \t   provides|| regular ; '
+words = re.split('[,\s;|]+',s)
+print("words:", words)

@@ -181,6 +181,7 @@ print(User.display_active_users())
 u1 = User("Tom", "Hanks", 35)
 u2 = User("jack", "Skin", 36)
 u3 = User("wolf", "Hanky", 37)
+print("dir:" , dir(u1))
 print("self defined magic method:",len(u3))
 print(u2+u3) # __add__
 newlist = u1 * 2
